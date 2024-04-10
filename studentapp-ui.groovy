@@ -16,10 +16,10 @@ pipeline {
         }
         stage('Test') {
             steps {
-                sh '''/opt/apache-maven-3.9.6/bin/mvn sonar:sonar \\
-                        -Dsonar.projectKey=student \\
-                        -Dsonar.host.url=http://13.208.169.87:9000 \\
-                        -Dsonar.login=d1443564cb1ff774fc8e208c89fe9ab4bef53743'''
+               '''/opt/apache-maven-3.9.6/bin/mvn sonar:sonar \
+                 -Dsonar.projectKey=stud \
+                 -Dsonar.host.url=http://15.168.7.60:9000 \
+                 -Dsonar.login=d1abc41e4259aeee88fcc5b379d32766a9316201 '''
             }
         }
         stage('Quality Test') {
