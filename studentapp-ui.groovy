@@ -22,13 +22,9 @@ pipeline {
                  -Dsonar.login=d1abc41e4259aeee88fcc5b379d32766a9316201 '''
             }
         }
-        stage('Quality Test') {
-            steps {
-                echo 'Here we are testing the quality'
-            }
-        }
         stage('Deploy') {
             steps {
+                sh "/var/lib/jenkins/workspace/studentapp-ui/target/studentapp-2.2-SNAPSHOT.war  /root/apache-tomcat-10.1.20/webapps"
                 echo 'Deploy Done'
             }
         
