@@ -18,7 +18,7 @@ pipeline {
             steps {
                sh ''' /opt/apache-maven-3.9.6/bin/mvn sonar:sonar \
                  -Dsonar.projectKey=stud \
-                 -Dsonar.host.url=http://15.168.7.60:9000 \
+                 -Dsonar.host.url=http://15.168.11.73:9000 \
                  -Dsonar.login=d1abc41e4259aeee88fcc5b379d32766a9316201 '''
             }
         }
