@@ -16,16 +16,15 @@ pipeline {
         }
         stage('Test') {
             steps {
-               sh ''' /opt/apache-maven-3.9.6/bin/mvn sonar:sonar \
-                 -Dsonar.projectKey=stud \
-                 -Dsonar.host.url=http://15.168.11.73:9000 \
-                 -Dsonar.login=d1abc41e4259aeee88fcc5b379d32766a9316201 '''
+               sh ''' /opt/apache-maven-3.9.6/bin/mvn mvn sonar:sonar \
+                       -Dsonar.projectKey=my-project \
+                       -Dsonar.host.url=http://15.168.11.73:9000 \
+                        -Dsonar.login=bc6a02cac9fe27398f76cb56eb4ec88a4ee8386a '''
             }
         }
         stage('Deploy') {
             steps {
-                sh "cp /var/lib/jenkins/workspace/studentapp-ui/target/studentapp-2.2-SNAPSHOT.war  /root/apache-tomcat-10.1.20/webapps/"
-                echo 'Deploy Done'
+              echo 'Deploy Done'
             }
         
         }
