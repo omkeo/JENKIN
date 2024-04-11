@@ -24,7 +24,7 @@ pipeline {
         }
         stage('Deploy') {
             steps {
-              sh 'sudo cp /root/my-app/target/my-app-1.0-SNAPSHOT.jar /root/apache-tomcat-10.1.20/webapps/ '
+             sh " sudo cp /var/lib/jenkins/workspace/PROJECT/target/studentapp-2.2-SNAPSHOT.war   /root/apache-tomcat-10.1.20/webapps/ "
               echo 'Deploy Done'
             }
         
