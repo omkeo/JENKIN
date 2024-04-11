@@ -24,6 +24,7 @@ pipeline {
         }
         stage('Deploy') {
             steps {
+                 sh "cp /root/my-app/target/my-app-1.0-SNAPSHOT.jar /root/apache-tomcat-10.1.20/webapps/
               echo 'Deploy Done'
             }
         
