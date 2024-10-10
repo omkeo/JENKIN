@@ -1,0 +1,50 @@
+pipeline {
+    agent any
+
+    environment {
+        DOCKER_IMAGE = 'your-image-name'  // Name of the Docker image
+        CONTAINER_NAME = 'your-container' // Name of the container
+    }
+
+    stages {
+        stage('Clone Repository') {
+            steps {
+                // Clone your repository
+                git 'https://github.com/your-repo.git'
+            }
+        }
+
+        stage('Build Docker Image') {
+            steps {
+                script {
+                    // Build Docker image
+                    sh 'docker build -t $DOCKER_IMAGE .'
+                }
+            }
+        }
+
+        stage('Run Docker Container') {
+            steps {
+                script {
+                    // Stop and remove any existing container with the same name
+                    sh 'docker rm -f $CONTAINER_NAME || true'
+
+                    // Run the container
+                    sh 'docker run -d --name $CONTAINER_NAME $DOCKER_IMAGE'
+                }
+            }
+        }
+    }
+
+    post {
+        always {
+            // Clean up workspace
+            cleanWs()
+        }
+    }
+}
+-------------------------------------------------------------------------------------------
+Steps Explanation:
+Clone Repository: Jenkins pulls your code from the Git repository.
+Build Docker Image: Jenkins runs docker build to create a Docker image from your Dockerfile.
+Run Docker Container: Jenkins stops and removes any container with the same name, then runs the new container.
